@@ -1,7 +1,9 @@
 package etl
-import "testing"
+import (
+    "testing"
+)
 
-func TestreadCSV(t *testing.T) {
+func TestReadCSV(t *testing.T) {
     if readCSV() != 6714 {
         t.Error(
             "For", "csv",
