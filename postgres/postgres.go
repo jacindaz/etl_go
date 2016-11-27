@@ -11,7 +11,7 @@ import (
 func Postgres() {
     fmt.Print("Inside postgres function")
 
-    csv_lines := csv_processing.ReadCSV()
+    csv_lines := csv_processing.ReadCSVLineByLine()
     fmt.Print("\nNumber of lines in csv: ")
     fmt.Print(csv_lines)
 }

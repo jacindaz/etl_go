@@ -6,19 +6,8 @@ import (
     "regexp"
 )
 
-func TestReadCSV(t *testing.T) {
-    total_lines := ReadCSV()
-    if total_lines != 6714 {
-        t.Error(
-            "For", "csv",
-            "expected", 6714,
-            "got", total_lines,
-        )
-    }
-}
-
-func TestProcessCSV(t *testing.T) {
-    records := ProcessCSV()
+func TestReadEntireCSV(t *testing.T) {
+    records := ReadEntireCSV()
     header := records[0]
 
     if (header[0] != "Candidate Email") {
@@ -46,6 +35,17 @@ func TestProcessCSV(t *testing.T) {
             "For", "csv file",
             "expected", fmt.Sprintf("%s to contain an email address", random_record_email),
             "got", err,
+        )
+    }
+}
+
+func TestReadCSVLineByLine(t *testing.T) {
+    total_lines := ReadCSVLineByLine()
+    if total_lines != 6714 {
+        t.Error(
+            "For", "csv",
+            "expected", 6714,
+            "got", total_lines,
         )
     }
 }

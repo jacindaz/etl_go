@@ -8,7 +8,10 @@ import (
     "os"           //Package os provides a platform-independent interface to operating system functionality.
 )
 
-func ProcessCSV() [][]string {
+func ReadEntireCSV() [][]string {
+    // START HERE
+    // CAN REFACTOR/MAKE DRY AND PULL LINES 15-21 INTO SEPARATE FUNCTION
+    // HAVE READCSV() FUNCTION ALSO USE THIS
     file_name := "/Users/jacindazhong/Documents/jacinda/go_workspace/src/github.com/jacinda/etl/data/oldnavy_55e7ebb5c8b09a0024005661.csv"
     f, err_opening_file := os.Open(file_name)
     defer f.Close()
@@ -20,17 +23,10 @@ func ProcessCSV() [][]string {
     records, err := reader.ReadAll()
     if err != nil { log.Fatal(err) }
 
-    fmt.Print("\nProcessCSV() errors: \n")
-    fmt.Print(records[0]) // header
-    fmt.Print("\n")
-    fmt.Print(records[1]) // one record is an array of the entire CSV row
-    fmt.Print("\n")
-    fmt.Print(records[2])
-
     return records
 }
 
-func ReadCSV() int {
+func ReadCSVLineByLine() int {
     file_name := "/Users/jacindazhong/Documents/jacinda/go_workspace/src/github.com/jacinda/etl/data/oldnavy_55e7ebb5c8b09a0024005661.csv"
     f, err_opening_file := os.Open(file_name)
     defer f.Close()

@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-    csv_processing.ProcessCSV()
+    csv_processing.ReadEntireCSV()
     postgres.Postgres()
 }
