@@ -1,4 +1,4 @@
-package etl
+package csv_processing
 import (
     "testing"
 )
