@@ -8,6 +8,28 @@ import (
     "os"           //Package os provides a platform-independent interface to operating system functionality.
 )
 
+func ProcessCSV() [][]string {
+    file_name := "/Users/jacindazhong/Documents/jacinda/go_workspace/src/github.com/jacinda/etl/data/oldnavy_55e7ebb5c8b09a0024005661.csv"
+    f, err_opening_file := os.Open(file_name)
+    defer f.Close()
+
+    reader := csv.NewReader(f)
+    reader.TrimLeadingSpace = true
+    if err_opening_file != nil { log.Fatal(err_opening_file) }
+
+    records, err := reader.ReadAll()
+    if err != nil { log.Fatal(err) }
+
+    fmt.Print("\nProcessCSV() errors: \n")
+    fmt.Print(records[0]) // header
+    fmt.Print("\n")
+    fmt.Print(records[1]) // one record is an array of the entire CSV row
+    fmt.Print("\n")
+    fmt.Print(records[2])
+
+    return records
+}
+
 func ReadCSV() int {
     file_name := "/Users/jacindazhong/Documents/jacinda/go_workspace/src/github.com/jacinda/etl/data/oldnavy_55e7ebb5c8b09a0024005661.csv"
     f, err_opening_file := os.Open(file_name)

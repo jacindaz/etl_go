@@ -13,3 +13,16 @@ func TestReadCSV(t *testing.T) {
         )
     }
 }
+
+func TestProcessCSV(t *testing.T) {
+    records := ProcessCSV()
+    header := records[0]
+
+    if (header[0] != "Candidate Email") {
+        t.Error(
+            "For", "csv file",
+            "expected", "Candidate Email",
+            "got", header[0],
+        )
+    }
+}
