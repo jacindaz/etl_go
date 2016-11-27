@@ -8,7 +8,7 @@ import (
     "os"           //Package os provides a platform-independent interface to operating system functionality.
 )
 
-func readCSV() int {
+func ReadCSV() int {
     file_name := "/Users/jacindazhong/Documents/jacinda/go_workspace/src/github.com/jacinda/etl/data/oldnavy_55e7ebb5c8b09a0024005661.csv"
     f, err_opening_file := os.Open(file_name)
     defer f.Close()
