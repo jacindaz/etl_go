@@ -1,6 +1,9 @@
 package csv_processing
 import (
+    "fmt"
     "testing"
+    "math/rand"
+    "regexp"
 )
 
 func TestReadCSV(t *testing.T) {
@@ -23,6 +26,26 @@ func TestProcessCSV(t *testing.T) {
             "For", "csv file",
             "expected", "Candidate Email",
             "got", header[0],
+        )
+    }
+
+    if (header[1] != "Job Title") {
+        t.Error(
+            "For", "csv file",
+            "expected", "Job Title",
+            "got", header[1],
+        )
+    }
+
+    random_record_index := rand.Intn(6714)
+    random_record_email := records[random_record_index][0]
+    matched, err := regexp.MatchString("@", random_record_email)
+
+    if !matched {
+        t.Error(
+            "For", "csv file",
+            "expected", fmt.Sprintf("%s to contain an email address", random_record_email),
+            "got", err,
         )
     }
 }
