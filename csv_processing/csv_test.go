@@ -4,11 +4,12 @@ import (
 )
 
 func TestReadCSV(t *testing.T) {
-    if ReadCSV() != 6714 {
+    total_lines := ReadCSV()
+    if total_lines != 6714 {
         t.Error(
             "For", "csv",
             "expected", 6714,
-            "got", ReadCSV(),
+            "got", total_lines,
         )
     }
 }
